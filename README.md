@@ -1,4 +1,6 @@
-# Political Science Forum — Editable HTML Card
+# Political Science Forum — Editable Card
+
+GitHub Pages-ready static editor.
 
 ## Root files
 - `index.html`
@@ -9,27 +11,26 @@
 - `portrait.png`
 - `README.md`
 
-## Defaults
-- LEFT logo: supplied Logo 4
-- RIGHT logo: supplied Logo 1
-- Portrait: supplied Portrait 3 with a green background
-- Poster artwork: supplied Card Design 2
-- `POLITICAL SCIENCE FORUM` remains fixed and non-editable.
+The Design 2 card artwork is embedded directly in `style.css`, so no assets/css/js folders are required.
 
-## Editing
-Open `index.html` in a browser. Edit the text fields, upload a new portrait, or upload replacement logos.
+## Fixed artwork
+`POLITICAL SCIENCE FORUM` remains part of the fixed Design 2 artwork and has no editor field.
 
-Portrait controls:
-- Zoom In / Zoom Out
-- Move Left / Right / Up / Down
-- Reset
+## Editable
+- M.C COLLEGE, SYLHET
+- COMMITTEE 2026-27
+- MAHMUDUL HASAN
+- MEMBER
+- MASTER'S FINAL (47TH BATCH)
+- DEPARTMENT OF POLITICAL SCIENCE
 
-Text is forced to one line and automatically reduced only as needed to remain inside its assigned area.
+Text is kept on one line and automatically reduced slightly when necessary so it stays inside its designated area.
 
-## PNG export
-`DOWNLOAD PNG` renders only the poster into a 1024×1536 PNG canvas, creates a PNG Blob with `canvas.toBlob()`, and triggers a temporary `<a download>` element. Editor controls are never included in the exported PNG.
+## Photo
+Upload, zoom, move, or reset. The portrait is clipped to the fixed photo area and a new upload fully replaces the old one.
 
-If a browser blocks the first download, the fallback `OPEN PNG / SAVE PNG` button becomes available.
+## Logos
+Left and right logos can be replaced. Aspect ratio is preserved. The supplied left logo has an edge-connected white background removed so it does not appear as a white floating rectangle; enclosed white logo details are retained.
 
-## GitHub Pages
-Upload all seven root files to the same repository/root level. No `assets/`, `css/`, or `js/` folders are required.
+## PNG download
+The editor renders the final 1024×1536 poster to a canvas, creates a PNG Blob with `canvas.toBlob()`, creates a temporary object URL, and triggers an `<a download>` click. Editor controls are not exported.

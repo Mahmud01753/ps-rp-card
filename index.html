@@ -3,60 +3,41 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Political Science Forum — Card Editor</title>
+<title>Political Science Forum — Editable Card</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="app">
-  <aside class="panel" aria-label="Editor controls">
+  <aside class="panel">
     <h1>Card Editor</h1>
-    <p class="note">The original poster artwork is the fixed reference. “POLITICAL SCIENCE FORUM” is permanently fixed.</p>
+    <p class="note">Design 2 is the fixed base card. “POLITICAL SCIENCE FORUM” is part of the fixed artwork and is not editable.</p>
 
     <section>
-      <h2>Text</h2>
-      <label>College
-        <input id="collegeInput" value="M.C COLLEGE, SYLHET" maxlength="28">
-      </label>
-      <label>Committee
-        <input id="committeeInput" value="COMMITTEE 2026-27" maxlength="24">
-      </label>
-      <label>Name
-        <input id="nameInput" value="MAHMUDUL HASAN" maxlength="32">
-      </label>
-      <label>Role
-        <input id="roleInput" value="MEMBER" maxlength="18">
-      </label>
-      <label>Batch
-        <input id="batchInput" value="MASTER'S FINAL (47TH BATCH)" maxlength="34">
-      </label>
-      <label>Department
-        <input id="departmentInput" value="DEPARTMENT OF POLITICAL SCIENCE" maxlength="42">
-      </label>
+      <h2>Editable Text</h2>
+      <label>M.C COLLEGE, SYLHET<input id="collegeInput" value="M.C COLLEGE, SYLHET" maxlength="30"></label>
+      <label>COMMITTEE<input id="committeeInput" value="COMMITTEE 2026-27" maxlength="28"></label>
+      <label>Name<input id="nameInput" value="MAHMUDUL HASAN" maxlength="36"></label>
+      <label>Role<input id="roleInput" value="MEMBER" maxlength="20"></label>
+      <label>Batch<input id="batchInput" value="MASTER'S FINAL (47TH BATCH)" maxlength="38"></label>
+      <label>Department<input id="departmentInput" value="DEPARTMENT OF POLITICAL SCIENCE" maxlength="44"></label>
     </section>
 
     <section>
       <h2>Portrait</h2>
       <input id="photoUpload" type="file" accept="image/*">
       <div class="button-grid">
-        <button data-photo="zoomIn">Zoom In</button>
-        <button data-photo="zoomOut">Zoom Out</button>
-        <button data-photo="left">Move Left</button>
-        <button data-photo="right">Move Right</button>
-        <button data-photo="up">Move Up</button>
-        <button data-photo="down">Move Down</button>
+        <button data-photo="zoomIn">Zoom In</button><button data-photo="zoomOut">Zoom Out</button>
+        <button data-photo="left">Move Left</button><button data-photo="right">Move Right</button>
+        <button data-photo="up">Move Up</button><button data-photo="down">Move Down</button>
         <button class="wide" data-photo="reset">Reset</button>
       </div>
     </section>
 
     <section>
       <h2>Logos</h2>
-      <label>Left logo
-        <input id="leftLogoUpload" type="file" accept="image/*">
-      </label>
-      <label>Right logo
-        <input id="rightLogoUpload" type="file" accept="image/*">
-      </label>
-      <p class="mini">Logo 4 is the default LEFT logo. Logo 1 is the default RIGHT logo. Aspect ratio is preserved.</p>
+      <label>Left logo<input id="leftLogoUpload" type="file" accept="image/*"></label>
+      <label>Right logo<input id="rightLogoUpload" type="file" accept="image/*"></label>
+      <p class="mini">Original logo artwork is shown with preserved aspect ratio. White backgrounds on uploaded logos are removed only when they are connected to the image edge, so enclosed white logo details remain.</p>
     </section>
 
     <section class="actions">
@@ -66,22 +47,20 @@
   </aside>
 
   <main class="workspace">
-    <div id="poster" class="poster" aria-label="Editable poster preview">
-      <img id="leftLogo" class="layer left-logo" src="logo-left.png" alt="">
-      <img id="rightLogo" class="layer right-logo" src="logo-right.png" alt="">
+    <div id="poster" class="poster">
+      <div class="cover college-cover"></div>
+      <div class="cover committee-cover"></div>
+      <div class="cover name-cover"></div>
+      <div class="cover role-cover"></div>
+      <div class="cover batch-cover"></div>
+      <div class="cover department-cover"></div>
+      <div class="cover left-logo-cover"></div>
+      <div class="cover right-logo-cover"></div>
 
-      <div class="mask college-mask"></div>
-      <div class="mask committee-mask"></div>
-      <div class="mask name-mask"></div>
-      <div class="mask role-mask"></div>
-      <div class="mask batch-mask"></div>
-      <div class="mask department-mask"></div>
-      <div class="mask left-logo-mask"></div>
-      <div class="mask right-logo-mask"></div>
+      <img id="leftLogo" class="logo left-logo" src="logo-left.png" alt="">
+      <img id="rightLogo" class="logo right-logo" src="logo-right.png" alt="">
 
-      <div id="photoFrame" class="photo-frame">
-        <img id="portrait" src="portrait.png" alt="">
-      </div>
+      <div id="photoFrame" class="photo-frame"><img id="portrait" src="portrait.png" alt=""></div>
 
       <div id="collegeText" class="editable college-text">M.C COLLEGE, SYLHET</div>
       <div id="committeeText" class="editable committee-text">COMMITTEE 2026-27</div>
