@@ -1,103 +1,97 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Political Science Forum — Editable Card</title>
-<style>
-*{box-sizing:border-box}body{margin:0;background:#dbe6f2;font-family:Georgia,"Times New Roman",serif}
-.wrap{display:grid;grid-template-columns:310px 1fr;min-height:100vh}.controls{background:#fff;padding:16px;overflow:auto;border-right:1px solid #cbd5e1}.controls h2{margin:0 0 12px;font-size:19px}
-.box{border:1px solid #d8dee8;border-radius:12px;padding:11px;margin:9px 0}.box label{display:block;font-size:13px;font-weight:700;margin:7px 0 4px}
-input,button,select{width:100%;padding:8px;border:1px solid #cbd5e1;border-radius:8px;font:inherit}input[type=range]{padding:0}button{background:#082a52;color:#fff;border:0;margin-top:6px;font-weight:700;cursor:pointer}.muted{font-size:12px;color:#64748b;line-height:1.4}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.stage{display:flex;justify-content:center;align-items:flex-start;padding:20px;overflow:auto}
-.card{position:relative;width:min(768px,88vw);aspect-ratio:1024/1536;overflow:hidden;box-shadow:0 12px 35px #33415555}
-.base{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-.logoMask{position:absolute;background:#f8f8f6;z-index:2;border-radius:5px}.lm{left:3.2%;top:5.3%;width:20%;height:17%}.rm{right:2.6%;top:5.2%;width:21%;height:16.5%}
-.logo{position:absolute;z-index:3;object-fit:contain}.ll{left:4.2%;top:5.7%;width:18%;height:15.5%}.rr{right:3.6%;top:5.6%;width:19%;height:15%}
-.photoMask{position:absolute;left:25.4%;top:33.8%;width:49.2%;height:32.3%;overflow:hidden;z-index:4}
-.photoMask img{position:absolute;width:100%;height:100%;object-fit:cover;transform-origin:center;user-select:none;cursor:grab}
-.photoBg{position:absolute;inset:0;background:#79b9df}
-.text{position:absolute;z-index:5;white-space:nowrap;overflow:hidden;text-align:center;font-weight:800;color:#082a52}
-.editTitle{left:26%;top:7.2%;width:48%;height:10%;font-size:clamp(18px,3.2vw,37px);color:#fff;line-height:1.02;display:flex;align-items:center;justify-content:center}
-.editCollege{left:28%;top:19.4%;width:44%;font-size:clamp(13px,2vw,22px);color:#fff}
-.editCommittee{left:25%;top:24.7%;width:50%;font-size:clamp(14px,2.4vw,28px)}
-.editName{left:15%;top:71.8%;width:70%;font-size:clamp(20px,3.4vw,39px);color:#fff}
-.editMember{left:31%;top:78.3%;width:38%;font-size:clamp(13px,1.9vw,22px)}
-.editInfo1{left:30%;top:84.1%;width:55%;font-size:clamp(11px,1.7vw,20px)}
-.editInfo2{left:30%;top:91.2%;width:57%;font-size:clamp(10px,1.55vw,19px)}
-/* masks hide only old text while leaving the original frame/design */
-.mask{position:absolute;z-index:4;pointer-events:none}.mTitle{left:25%;top:7%;width:50%;height:10%;background:#082a52;border-radius:20px}.mCollege{left:28%;top:19.2%;width:44%;height:4%;background:#082a52;border-radius:14px}.mCommittee{left:24%;top:24.3%;width:52%;height:5%;background:#e5bd61;border-radius:18px}.mName{left:14%;top:71%;width:72%;height:8%;background:#092d55;border-radius:28px}.mMember{left:30%;top:77.5%;width:40%;height:5%;background:#f5d990;border-radius:18px}.mI1{left:29%;top:83%;width:58%;height:5.5%;background:#f8f8f6}.mI2{left:29%;top:90%;width:60%;height:5.5%;background:#f8f8f6}
-@media(max-width:760px){.wrap{grid-template-columns:1fr}.controls{border-right:0;border-bottom:1px solid #cbd5e1}.stage{padding:8px}.card{width:96vw}}
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Political Science Forum — Card Editor</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="wrap">
-<aside class="controls">
-<h2>Editable Poster</h2>
-<div class="box">
-<label>Portrait upload</label><input id="photoUpload" type="file" accept="image/*">
-<label>Logo 1 — Left</label><input id="logoUpload1" type="file" accept="image/*">
-<label>Logo 2 — Right</label><input id="logoUpload2" type="file" accept="image/*">
-<div class="muted">New uploads completely replace the old image/logo. For direct GitHub replacement, keep the filenames <b>portrait.png</b>, <b>logo-left.png</b>, and <b>logo-right.png</b>.</div>
+<div class="app">
+  <aside class="panel" aria-label="Editor controls">
+    <h1>Card Editor</h1>
+    <p class="note">The original poster artwork is the fixed reference. “POLITICAL SCIENCE FORUM” is permanently fixed.</p>
+
+    <section>
+      <h2>Text</h2>
+      <label>College
+        <input id="collegeInput" value="M.C COLLEGE, SYLHET" maxlength="28">
+      </label>
+      <label>Committee
+        <input id="committeeInput" value="COMMITTEE 2026-27" maxlength="24">
+      </label>
+      <label>Name
+        <input id="nameInput" value="MAHMUDUL HASAN" maxlength="32">
+      </label>
+      <label>Role
+        <input id="roleInput" value="MEMBER" maxlength="18">
+      </label>
+      <label>Batch
+        <input id="batchInput" value="MASTER'S FINAL (47TH BATCH)" maxlength="34">
+      </label>
+      <label>Department
+        <input id="departmentInput" value="DEPARTMENT OF POLITICAL SCIENCE" maxlength="42">
+      </label>
+    </section>
+
+    <section>
+      <h2>Portrait</h2>
+      <input id="photoUpload" type="file" accept="image/*">
+      <div class="button-grid">
+        <button data-photo="zoomIn">Zoom In</button>
+        <button data-photo="zoomOut">Zoom Out</button>
+        <button data-photo="left">Move Left</button>
+        <button data-photo="right">Move Right</button>
+        <button data-photo="up">Move Up</button>
+        <button data-photo="down">Move Down</button>
+        <button class="wide" data-photo="reset">Reset</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Logos</h2>
+      <label>Left logo
+        <input id="leftLogoUpload" type="file" accept="image/*">
+      </label>
+      <label>Right logo
+        <input id="rightLogoUpload" type="file" accept="image/*">
+      </label>
+      <p class="mini">Logo 4 is the default LEFT logo. Logo 1 is the default RIGHT logo. Aspect ratio is preserved.</p>
+    </section>
+
+    <section class="actions">
+      <button id="downloadBtn" class="primary">DOWNLOAD PNG</button>
+      <button id="fallbackBtn" class="secondary hidden">OPEN PNG / SAVE PNG</button>
+    </section>
+  </aside>
+
+  <main class="workspace">
+    <div id="poster" class="poster" aria-label="Editable poster preview">
+      <img id="leftLogo" class="layer left-logo" src="logo-left.png" alt="">
+      <img id="rightLogo" class="layer right-logo" src="logo-right.png" alt="">
+
+      <div class="mask college-mask"></div>
+      <div class="mask committee-mask"></div>
+      <div class="mask name-mask"></div>
+      <div class="mask role-mask"></div>
+      <div class="mask batch-mask"></div>
+      <div class="mask department-mask"></div>
+      <div class="mask left-logo-mask"></div>
+      <div class="mask right-logo-mask"></div>
+
+      <div id="photoFrame" class="photo-frame">
+        <img id="portrait" src="portrait.png" alt="">
+      </div>
+
+      <div id="collegeText" class="editable college-text">M.C COLLEGE, SYLHET</div>
+      <div id="committeeText" class="editable committee-text">COMMITTEE 2026-27</div>
+      <div id="nameText" class="editable name-text">MAHMUDUL HASAN</div>
+      <div id="roleText" class="editable role-text">MEMBER</div>
+      <div id="batchText" class="editable batch-text">MASTER'S FINAL (47TH BATCH)</div>
+      <div id="departmentText" class="editable department-text">DEPARTMENT OF POLITICAL SCIENCE</div>
+    </div>
+  </main>
 </div>
-<div class="box">
-<label>Frame background</label><input id="bgColor" type="color" value="#79b9df">
-<label>Photo zoom</label><input id="zoom" type="range" min="0.7" max="3" step=".01" value="1">
-<div class="row"><button onclick="move(0,-8)">↑</button><button onclick="move(0,8)">↓</button><button onclick="move(-8,0)">←</button><button onclick="move(8,0)">→</button></div>
-<button onclick="resetPhoto()">Reset photo</button>
-</div>
-<div class="box">
-<label>Political Science Forum</label><input id="forum" value="POLITICAL SCIENCE FORUM">
-<label>M.C College</label><input id="college" value="M.C COLLEGE, SYLHET">
-<label>Committee</label><input id="committee" value="COMMITTEE 2026-27">
-<label>Name</label><input id="name" value="MAHMUDUL HASAN">
-<label>Role</label><input id="member" value="MEMBER">
-<label>Academic</label><input id="info1" value="MASTER’S FINAL (47TH BATCH)">
-<label>Department</label><input id="info2" value="DEPARTMENT OF POLITICAL SCIENCE">
-<div class="muted">Long text stays on one line. The font scales responsively but will not wrap.</div>
-</div>
-<div class="box">
-<button onclick="downloadPNG()">Download PNG</button>
-<button onclick="saveSettings()">Save settings</button>
-<label>Load settings</label><input id="load" type="file" accept=".json,application/json">
-</div>
-</aside>
-<main class="stage"><div class="card" id="card">
-<img class="base" src="design-base.png">
-<div class="logoMask lm"></div><div class="logoMask rm"></div>
-<img class="logo ll" id="logo1" src="logo-left.png"><img class="logo rr" id="logo2" src="logo-right.png">
-<div class="mask mTitle"></div><div class="mask mCollege"></div><div class="mask mCommittee"></div><div class="mask mName"></div><div class="mask mMember"></div><div class="mask mI1"></div><div class="mask mI2"></div>
-<div class="photoMask" id="photoMask"><div class="photoBg" id="photoBg"></div><img id="photo" src="portrait.png"></div>
-<div class="text editTitle" id="vforum">POLITICAL SCIENCE FORUM</div>
-<div class="text editCollege" id="vcollege">M.C COLLEGE, SYLHET</div>
-<div class="text editCommittee" id="vcommittee">COMMITTEE 2026-27</div>
-<div class="text editName" id="vname">MAHMUDUL HASAN</div>
-<div class="text editMember" id="vmember">MEMBER</div>
-<div class="text editInfo1" id="vinfo1">MASTER’S FINAL (47TH BATCH)</div>
-<div class="text editInfo2" id="vinfo2">DEPARTMENT OF POLITICAL SCIENCE</div>
-</div></main>
-</div>
-<script>
-const $=id=>document.getElementById(id);let px=0,py=0,s=1;
-const fields=[['forum','vforum'],['college','vcollege'],['committee','vcommittee'],['name','vname'],['member','vmember'],['info1','vinfo1'],['info2','vinfo2']];
-fields.forEach(([a,b])=>$(a).addEventListener('input',()=>$(b).textContent=$(a).value));
-function update(){ $('photo').style.transform=`translate(${px}px,${py}px) scale(${s})`; }
-function move(x,y){px+=x;py+=y;update()} function resetPhoto(){px=py=0;s=1;$('zoom').value=1;update()}
-$('zoom').oninput=e=>{s=+e.target.value;update()};$('bgColor').oninput=e=>$('photoBg').style.background=e.target.value;
-function upload(input,target){input.addEventListener('change',()=>{let f=input.files[0];if(!f)return;let r=new FileReader();r.onload=()=>$(target).src=r.result;r.readAsDataURL(f)})}
-upload($('photoUpload'),'photo');upload($('logoUpload1'),'logo1');upload($('logoUpload2'),'logo2');
-function saveSettings(){let d={};fields.forEach(([a])=>d[a]=$(a).value);d.bg=$('bgColor').value;d.zoom=s;d.px=px;d.py=py;let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(d,null,2)],{type:'application/json'}));a.download='poster-settings.json';a.click()}
-$('load').onchange=e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{let d=JSON.parse(r.result);fields.forEach(([a,b])=>{if(d[a]!=null){$(a).value=d[a];$(b).textContent=d[a]}});$('bgColor').value=d.bg||'#79b9df';$('photoBg').style.background=$('bgColor').value;s=d.zoom||1;px=d.px||0;py=d.py||0;$('zoom').value=s;update()};r.readAsText(f)}
-async function downloadPNG(){
-  // SVG foreignObject export: works without external libraries and keeps uploaded images.
-  const card=$('card'), rect=card.getBoundingClientRect(), w=1024,h=1536;
-  const clone=card.cloneNode(true);
-  clone.style.width=w+'px';clone.style.height=h+'px';
-  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><foreignObject width="100%" height="100%"><div xmlns="http://www.w3.org/1999/xhtml">${clone.outerHTML}</div></foreignObject></svg>`;
-  const blob=new Blob([svg],{type:'image/svg+xml;charset=utf-8'}), url=URL.createObjectURL(blob), im=new Image();
-  im.onload=()=>{let c=document.createElement('canvas');c.width=w;c.height=h;let x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,w,h);x.drawImage(im,0,0,w,h);URL.revokeObjectURL(url);c.toBlob(b=>{let a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='political-science-forum.png';a.click()},'image/png')};
-  im.onerror=()=>alert('PNG export failed in this browser. Use Chrome/Edge on GitHub Pages.');im.src=url;
-}
-update();
-</script>
-</body></html>
+<script src="script.js"></script>
+</body>
+</html>
